@@ -1,0 +1,117 @@
+@use 'variables' as v;
+
+@mixin button($bgcolor, $diplay) {
+    background-color: $bgcolor;
+    display: $diplay;
+    text-decoration: none;
+    width: 50%;
+    max-width: 30rem;
+    color: v.$blanco;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: #4f7a03;
+        cursor: pointer;
+    }
+}
+
+@mixin grid($columns, $space) {
+    display: grid;
+    grid-template-columns: repeat($columns, 1fr);
+    gap: $space;
+}
+
+@mixin animatedButton($button-color, $text-color-hover: v.$blanco) {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 16px 36px;
+    border: 4px solid;
+    border-color: transparent;
+    font-size: 16px;
+    background-color: inherit;
+    border-radius: 100px;
+    font-weight: 600;
+    color: $button-color;
+    box-shadow: 0 0 0 2px $button-color;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+
+    svg {
+        position: absolute;
+        width: 24px;
+        fill: $button-color;
+        z-index: 9;
+        transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .arr-1 {
+        right: 16px;
+    }
+
+    .arr-2 {
+        left: -25%;
+    }
+
+    .circle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 20px;
+        height: 20px;
+        background-color: $button-color;
+        border-radius: 50%;
+        opacity: 0;
+        transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .text {
+        position: relative;
+        z-index: 1;
+        transform: translateX(-12px);
+        transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    &:hover {
+        box-shadow: 0 0 0 12px transparent;
+        color: $text-color-hover;
+        border-radius: 12px;
+
+        .arr-1 {
+            right: -25%;
+        }
+
+        .arr-2 {
+            left: 16px;
+        }
+
+        .text {
+            transform: translateX(12px);
+        }
+
+        svg {
+            fill: $text-color-hover;
+        }
+
+        .circle {
+            width: 220px;
+            height: 220px;
+            opacity: 1;
+        }
+    }
+
+    &:active {
+        scale: 0.95;
+        box-shadow: 0 0 0 4px $button-color;
+    }
+}
+

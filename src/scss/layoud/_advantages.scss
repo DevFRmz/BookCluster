@@ -1,0 +1,62 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.advantages {
+    padding: v.$espaciado 0;
+    background-color: v.$azul;
+    color: v.$blanco;
+    text-align: center;
+
+    .advantages__container{
+        @include m.grid(2, 5rem);
+    }
+    
+    &__title {
+        font-size: 4rem;
+        margin-bottom: 5rem;
+    }
+    
+    &__text {
+        font-size: 2.3rem;
+        margin-bottom: 20px;
+    }
+
+    ul {
+        list-style: none;
+    }
+    
+    ul li {
+        position: relative;
+        padding-left: 2.8rem; /* Espacio para el icono */
+    }
+    
+    ul li::before {
+        content: '';
+        position: absolute;
+        left: 0; /* Coloca el icono a la izquierda */
+        top: 0.3rem; /* Alinea el icono verticalmente */
+        width: 2rem;
+        height: 2rem;
+        background-image: url('/img/icons/li.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    li {
+        font-size: 1.8rem;
+        text-align: left;
+        margin-bottom: 2rem;
+        color: v.$azul-claro;
+    }
+
+    .advantages__image{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        filter: invert(1);
+    }
+
+    img {
+        width: 50%;
+    }
+}

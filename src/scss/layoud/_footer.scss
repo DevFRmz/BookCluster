@@ -1,0 +1,89 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.footer {
+    background-color: v.$azul;
+    color: v.$blanco;
+    font-size: 1.4rem;
+    padding: 2rem 2rem;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+
+.footer-section {
+    margin-bottom: 2rem; 
+}
+
+.footer-section h4 {
+    margin-bottom: 2rem; 
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-section ul li a {
+    color: v.$blanco;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.footer-section ul li {
+    margin-bottom: 1rem;
+}
+
+.footer-section a {
+    transition: color .3s;
+}
+
+.footer-section a:hover {
+    color: v.$amarillo;
+}
+
+.social-icons a {
+    position: relative;
+    display: inline-block;
+    margin-right: 1rem;
+    overflow: hidden;
+}
+
+.social-icons img {
+    display: block;
+    width: 4rem;
+    height: auto;
+}
+
+.normal-icon {
+    transition: opacity 0.3s ease; /* Suave transición para opacidad */
+}
+
+.hover-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.5s ease; /* Suave transición para opacidad */
+    opacity: 0; /* Inicialmente transparente */
+}
+
+.social-icons a:hover .normal-icon {
+    opacity: 0; /* Opacidad cero al hacer hover */
+}
+
+.social-icons a:hover .hover-icon {
+    opacity: 1; /* Opacidad completa al hacer hover */
+}
+
+.footer-credits {
+    text-align: center;
+    padding-top: 2rem;
+    font-size: 1.4rem; /* Tamaño de fuente menor para los créditos */
+    border-top: 1px solid #285C7F; /* Línea divisoria para separar los créditos */
+}

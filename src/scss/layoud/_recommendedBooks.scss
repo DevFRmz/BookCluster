@@ -1,0 +1,40 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+
+.recommended-books {
+    margin: v.$espaciado 0;
+
+    h2 {
+        text-align: center;
+        font-size: 4rem;
+        margin: 15rem 0 5rem 0;
+    }
+
+    &__book a{
+        color: v.$gris;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: all 0.3s ease;
+        h3{
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        img {
+            width: 60%;
+            height: 30rem;
+            object-fit: cover;
+            border-radius: 1rem;
+        }
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}
+.recommended-books__grid {
+    @include m.grid(4, 2rem);
+}

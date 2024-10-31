@@ -1,0 +1,170 @@
+@use '../base/variables' as v;
+
+$default-color: v.$azul;
+$color-text: #ccc;
+$color-active: #1a73e8;
+$color-active-input: v.$gris;
+$transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+$width-input: 60rem;
+
+.search-panels {
+    display: flex;
+    justify-content: center;
+    height: 10rem;
+  }
+  
+  .search-group {
+    position: relative;
+    margin-top: 12rem;
+  }
+
+.input {
+  width: $width-input;
+  border: solid 0.2rem $default-color;
+  border-radius: 80px;
+  background: none;
+  padding: 2rem;
+  padding-right: 3rem;
+  font-size: 1.3rem;
+  color: $color-active-input;
+  transition: border $transition;
+
+  &:focus,
+  &:valid {
+    outline: none;
+    border: 0.2rem solid $color-active;
+  }
+}
+
+.enter-label {
+  position: absolute;
+  left: 3rem;
+  top: .9rem;
+  color: $default-color;
+  pointer-events: none;
+  transform: translateY(1rem);
+  transition: $transition;
+
+  .input:focus ~ &,
+  .input:valid ~ & {
+    transform: translateY(-70%) scale(0.9);
+    background-color: $color-active;
+    border-radius: 20px;
+    padding: 0.5em 0.8em;
+    color: $color-text;
+  }
+}
+
+.btn-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -1em;
+  right: 0%; // Ajuste aquí
+  border-radius: 100%;
+  transition: $transition; // Remover otras transiciones para simplificar
+  opacity: 0;
+
+  .input:focus ~ &,
+  .input:valid ~ & {
+    right: 5%; // Asegúrate de que esta posición sea coherente
+    opacity: 1;
+    transition-delay: 0s;
+  }
+
+  .input:not(:focus) ~ &,
+  .input:not(:valid) ~ & {
+    transition-property: right, opacity;
+    transition-delay: 300ms;
+  }
+
+  .input:focus ~ &:hover,
+  .input:valid ~ &:hover {
+    transform: scale(1.2);
+  }
+
+  .input:focus ~ &:hover:active,
+  .input:valid ~ &:hover:active {
+    transform: scale(1);
+  }
+}
+
+.btn-search {
+  position: relative;
+  cursor: pointer;
+  background-color: $color-active;
+  width: 2em;
+  height: 2em;
+  top: -.7rem; 
+  border: none;
+  border-radius: 100%;
+  padding: 0;
+  transition: $transition;
+
+  &:active {
+    transform: scale(1);
+  }
+
+  svg {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    fill: $color-text;
+    width: 12px;
+    height: 12px;
+  }
+
+  #svg-circle {
+    fill: $color-text;
+    transition: $transition;
+  }
+
+  .input:focus ~ .btn-box:hover #svg-circle,
+  .input:valid ~ .btn-box:hover #svg-circle {
+    fill: transparent;
+  }
+}
+
+.btn-box-x {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 1em;
+  right: 7%;
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.1);
+  transition: $transition;
+
+  .input:focus ~ &,
+  .input:valid ~ & {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+.btn-cleare {
+  position: relative;
+  cursor: pointer;
+  background-color: transparent;
+  width: 2em;
+  height: 2em;
+  border: none;
+  border-radius: 100%;
+  padding: 0;
+  transition: $transition;
+
+  svg {
+    width: 15px;
+    height: 15px;
+
+    #cleare-line {
+      fill: $default-color;
+
+      .btn-box-x:hover & {
+        fill: $color-active;
+      }
+    }
+  }
+}
