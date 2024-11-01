@@ -9,6 +9,7 @@ export const renderCta = () => {
             <div class='cta__content'>
                 <h2>¿Listo para encontrar tu próxima lectura?</h2>
                 <p>Únete a BookCluster hoy y empieza a descubrir libros.</p>
+                
                 <button class="animated-button" data-route="signup">
                     <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                         <path

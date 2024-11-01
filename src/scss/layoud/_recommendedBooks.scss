@@ -11,6 +11,19 @@
         margin: 15rem 0 5rem 0;
     }
 
+    h3 {
+        font-size: 1rem;
+        max-height: 6rem;         /* Altura máxima de 5rem */
+        overflow: hidden;         /* Ocultar el texto que se sale del área */
+        display: -webkit-box;     /* Usar contenedor flexible en Safari */
+        line-clamp: 2;    /* Número máximo de líneas visibles */
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;  /* Agregar puntos suspensivos */
+        white-space: normal;      /* Permitir saltos de línea */
+        text-align: center;
+    }
+    
+
     &__book a{
         color: v.$gris;
         text-decoration: none;

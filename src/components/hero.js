@@ -7,7 +7,7 @@ export const renderHero = () => {
         <div class='container container-hero'>
             <div>
                 <p class='title-hero'>BookCluster</p>
-                <h2>Encuentra tu próxima gran lectura y conéctate con otros lectores.</h2>
+                <h2 class='hero__main-phrase'><span>Encuentra</span> tu próxima gran lectura y <span>conéctate</span> con otros lectores.</h2>
                 <p>Descubre, intercambia y comparte tus lecturas con BookCrossing</p>
 
                 <button class="animated-button" data-route="signup">

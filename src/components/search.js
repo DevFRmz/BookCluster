@@ -4,7 +4,7 @@ export const renderSearch = () => {
     search.innerHTML = `
         <div class="search-panels">
             <div class="search-group">
-                <input required="" type="text" name="text" autocomplete="on" class="input">
+                <input required="" type="text" name="text" autocomplete="on" class="input input-books">
                 <label class="enter-label">Busca un libro...</label>
                 <div class="btn-box">
                     <button class="btn-search">
@@ -16,8 +16,40 @@ export const renderSearch = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" id="cleare-line"></path></svg>
                     </button>
                 </div>
+                <ul class="suggestions-list" style="list-style: none; padding: 0; margin-top: 5px;"></ul>
             </div>
         </div>
     `;
+
+    const inputField = search.querySelector('.input-books');
+    const suggestionsList = search.querySelector('.suggestions-list');
+
+    inputField.addEventListener('input', async () => {
+        const query = inputField.value;
+        if (query.length < 1) {
+            suggestionsList.innerHTML = ''; // Limpiar las sugerencias si no hay texto
+            return;
+        }
+
+        try {
+            const response = await fetch(`http://localhost:5000/suggestions?query=${encodeURIComponent(query)}`);
+            const suggestions = await response.json();
+
+            suggestionsList.innerHTML = ''; // Limpiar las sugerencias previas
+
+            suggestions.forEach(title => {
+                const li = document.createElement('li');
+                li.textContent = title;
+                li.addEventListener('click', () => {
+                    inputField.value = title; // Completar el input con la sugerencia seleccionada
+                    suggestionsList.innerHTML = ''; // Limpiar las sugerencias después de seleccionar
+                });
+                suggestionsList.appendChild(li);
+            });
+        } catch (error) {
+            console.error('Error al obtener sugerencias:', error);
+        }
+    });
+
     return search;
 }

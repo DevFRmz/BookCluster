@@ -26,6 +26,24 @@
         font-family: v.$fuente-texto;
     }
 
+    .hero__main-phrase span {
+        color: v.$azul-claro;
+        position: relative;
+        display: inline-block;
+        
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -5px; /* Ajusta la posición de la curva */
+            height: 2rem; /* Grosor de la curva */
+            border-bottom: .5rem solid #3498db;
+            border-radius: 50%;
+            transform: scaleX(0.8); /* Ajusta el ancho de la curva */
+        }
+    }
+
     p {
         font-size: 2.3rem;
     }
